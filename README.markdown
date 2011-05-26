@@ -2,6 +2,8 @@
 
 This forked version is primarily used for own personal use. I heavily rely on activerecord-import in quite a few projects and wanted to get it up and running with JRuby/Rails.
 
+All tests pass - but please see caveats below.
+
 Caveats:
 
 * This forked version has only been tested with JRuby 1.6.2 running with the 1.9 ruby core (1.9 is required due to bugfixes - see commit https://github.com/Agiley/activerecord-import/commit/9d997cfa150dc4f0e917bbc0adc43d5415a11dbb)
