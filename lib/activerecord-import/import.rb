@@ -295,7 +295,7 @@ class ActiveRecord::Base
     # and +array_of_attributes+.
     def values_sql_for_columns_and_attributes(columns, array_of_attributes)   # :nodoc:
       array_of_attributes.map do |arr|
-        my_values = arr.each_with_index.map do |val,j|
+        my_values = arr.map.with_index do |val,j|
           column = columns[j]
           if !sequence_name.blank? && column.name == primary_key && val.nil?
              connection.next_value_for_sequence(sequence_name)
@@ -347,7 +347,7 @@ class ActiveRecord::Base
     # Returns an Array of Hashes for the passed in +column_names+ and +array_of_attributes+.
     def validations_array_for_column_names_and_attributes( column_names, array_of_attributes ) # :nodoc:
       array_of_attributes.map do |attributes|
-        Hash[attributes.each_with_index.map {|attr, c| [column_names[c], attr] }]
+        Hash[attributes.map.with_index {|attr, c| [column_names[c], attr] }]
       end
     end
     
