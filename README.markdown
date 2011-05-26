@@ -13,7 +13,7 @@ gem 'activerecord-jdbc-adapter'
 gem 'jdbc-mysql'
 ```
 
-* Your database.yml have to look something like:
+* Your database.yml has to look something like:
 
 ```yaml
 development:
