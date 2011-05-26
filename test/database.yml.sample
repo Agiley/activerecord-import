@@ -31,3 +31,9 @@ sqlite:
 sqlite3:
   adapter: sqlite3
   database: test.db
+  
+jdbc:
+  <<: *common
+  adapter: jdbc
+  driver: com.mysql.jdbc.Driver
+  url: jdbc:mysql://localhost:3306/activerecord_import_test
