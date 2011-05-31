@@ -32,8 +32,6 @@ module ActiveRecord::Import::AbstractAdapter
   end
   
   module InstanceMethods
-    mattr_accessor :sql_mode_set
-    
     def next_value_for_sequence(sequence_name)
       %{#{sequence_name}.nextval}
     end
@@ -45,9 +43,8 @@ module ActiveRecord::Import::AbstractAdapter
       # This is necessary in order to reset JDBC's strict STRICT_TRANS_TABLES sql mode. We're resetting the mode to mysql's default non-strict mode.
       # If we do not do this, inserts can't be performed where we do not specify the column name and a corresponding value for a column which requires values but doesn't have a default value specified
       # This basically makes the JDBC-adapter behave like the other adapters.
-      if (respond_to?(:set_sql_mode) && respond_to?(:sql_mode_set) && !self.sql_mode_set)
+      if (respond_to?(:set_sql_mode))
         set_sql_mode
-        self.sql_mode_set = true
       end
       
       # the number of inserts default
